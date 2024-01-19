@@ -6,3 +6,17 @@
 
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
+
+#padre{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 50px;
+    margin-left: 100px;
+    column-gap: 30px;
+}
+
+.hijo{
+    width: 400px;
+    margin-bottom: 50px;
+    
+}
