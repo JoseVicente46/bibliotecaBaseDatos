@@ -123,3 +123,5 @@ Route::put('update', [LibroController::class, 'update'])
 ->name('libros.update');*/
 
 Route::resource('libros', LibroController::class);
+
+//Route::resource('autores', AutorController::class);

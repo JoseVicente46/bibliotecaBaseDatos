@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Libro;
+use App\Models\Autor;
 
 class LibroController extends Controller
 {
@@ -13,7 +14,8 @@ class LibroController extends Controller
     public function index()
     {
         $libros = Libro::paginate(5);
-        return view('libros', compact('libros'));
+        $autores = Autor::get();
+        return view('libros', compact('libros','autores'));
     }
 
     /**
@@ -34,6 +36,7 @@ class LibroController extends Controller
         $libro->titulo = $request->get('titulo');
         $libro->editorial = $request->get('editorial');
         $libro->precio = $request->get('precio');
+        $libro->id_autor = $request->get('autor');
         $libro->save();
         return redirect()->route("libros.index");
     }
@@ -44,7 +47,8 @@ class LibroController extends Controller
     public function show(string $id)
     {
         $libro = Libro::find($id);
-        return view('mod', compact('libro'));
+        $autores = Autor::get();
+        return view('mod', compact('libro','autores'));
     }
 
     /**
@@ -62,7 +66,6 @@ class LibroController extends Controller
     {
         //dd($request);
         Libro::findOrFail($id)->update($request->all());
-        //return view('libros', compact('libros'));
         return redirect()->route("libros.index");
     }
 

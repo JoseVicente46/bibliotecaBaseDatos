@@ -1,11 +1,13 @@
 @extends('plantilla')
 @section('titulo', 'Listado de libros')
 @section('contenido')
+
 <h1>Listado de libros</h1>
 <table class="table">
     <thead>
         <tr>
             <th scope="col">Titulo</th>
+            <th scope="col">Autor</th>
             <th scope="col">Editorial</th>
             <th scope="col">Precio</th>
             <th scope="col">Borrar</th>
@@ -15,9 +17,10 @@
 @foreach ($libros as $libro)
 <tbody>
     <tr>
-        <td>{{ $libro["titulo"] }}</td>
-        <td>{{ $libro["editorial"] }}</td>
-        <td>{{ $libro["precio"] }}</td>
+        <td>{{ $libro->titulo }}</td>
+        <td>{{ $libro->autor->nombre }}</td>
+        <td>{{ $libro->editorial }}</td>
+        <td>{{ $libro->precio }}</td>
         <td><form action="{{ route('libros.destroy', $libro->id) }}" method="POST">
             @csrf
             @method('DELETE')
@@ -37,6 +40,7 @@
     <thead>
         <tr>
             <th scope="col">Titulo</th>
+            <th scope="col">Autor</th>
             <th scope="col">Editorial</th>
             <th scope="col">Precio</th>
             <th scope="col">Insertar</th>
@@ -46,6 +50,13 @@
 <tbody>
     <tr>
         <td><input class="form-control" name="titulo"></td>
+        <td>
+            <select class="form-select" name="autor">
+            @foreach ($autores as $autor)
+                <option value="{{$autor['id']}}">{{ $autor["nombre"] }}</option>
+            @endforeach  
+            </select> 
+        </td>
         <td><input class="form-control" name="editorial"></td>
         <td><input class="form-control" name="precio"></td>
         <td><button type=submit class="btn btn-primary" >Confirmar</button></td>
