@@ -30,6 +30,12 @@ class LibroController extends Controller
     public function store(Request $request)
     {
         //
+        $libro = new Libro();
+        $libro->titulo = $request->get('titulo');
+        $libro->editorial = $request->get('editorial');
+        $libro->precio = $request->get('precio');
+        $libro->save();
+        return redirect()->route("libros.index");
     }
 
     /**
@@ -37,7 +43,8 @@ class LibroController extends Controller
      */
     public function show(string $id)
     {
-        
+        $libro = Libro::find($id);
+        return view('mod', compact('libro'));
     }
 
     /**
@@ -53,8 +60,10 @@ class LibroController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
-
+        //dd($request);
+        Libro::findOrFail($id)->update($request->all());
+        //return view('libros', compact('libros'));
+        return redirect()->route("libros.index");
     }
 
     /**
@@ -63,7 +72,6 @@ class LibroController extends Controller
     public function destroy(string $id)
     {
         Libro::findOrFail($id)->delete();
-        $libros = Libro::paginate(5);
-        return view('libros', compact('libros'));
+        return redirect()->route("libros.index");
     }
 }

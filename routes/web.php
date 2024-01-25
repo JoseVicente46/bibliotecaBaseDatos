@@ -110,10 +110,16 @@ Route::get('cortos/{id}', function ($id) {
     return view('cortosId', compact('cortos','id'));
 })->name("cortosId");
 
-Route::get('libros', [LibroController::class, 'index'])->name("libros");
+/*Route::get('libros', [LibroController::class, 'index'])
+->name("libros");
 
 Route::get('/libros/{id}', [LibroController::class, 'destroy'])
 ->name('libros.destroy');
 
-Route::get('/libros/mod/{id}', [LibroController::class, 'show'])
+Route::get('mod/{id}', [LibroController::class, 'show'])
 ->name('libros.show');
+
+Route::put('update', [LibroController::class, 'update'])
+->name('libros.update');*/
+
+Route::resource('libros', LibroController::class);

@@ -18,10 +18,39 @@
         <td>{{ $libro["titulo"] }}</td>
         <td>{{ $libro["editorial"] }}</td>
         <td>{{ $libro["precio"] }}</td>
-        <td><a class="btn btn-primary" href="{{ route('libros.destroy', $libro['id']) }}">X</a></td>
+        <td><form action="{{ route('libros.destroy', $libro->id) }}" method="POST">
+            @csrf
+            @method('DELETE')
+            <input type="submit" class="btn btn-danger" value="Borrar libro" />
+        </form></td>
         <td><a class="btn btn-primary" href="{{ route('libros.show', $libro['id']) }}">&#9998</a></td>
     </tr>
 </tbody>
 @endforeach</table>
 {{ $libros->links() }}
+
+<h1>Inserta un libro</h1>
+<form name="form" action="{{ route('libros.store') }}" method="POST">
+@csrf
+@method("POST")
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Titulo</th>
+            <th scope="col">Editorial</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Insertar</th>
+        </tr>
+    </thead>
+
+<tbody>
+    <tr>
+        <td><input class="form-control" name="titulo"></td>
+        <td><input class="form-control" name="editorial"></td>
+        <td><input class="form-control" name="precio"></td>
+        <td><button type=submit class="btn btn-primary" >Confirmar</button></td>
+    </tr>
+</tbody>
+</table>
+</form>
 @endsection

@@ -7,7 +7,7 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Home</a>
-        <a class="nav-link" href="{{ route('libros') }}">Listado de libros</a>
+        <a class="nav-link" href="{{ route('libros.index') }}">Listado de libros</a>
       </div>
     </div>
   </div>
