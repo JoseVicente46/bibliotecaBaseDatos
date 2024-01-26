@@ -11,6 +11,6 @@ class Autor extends Model{
     protected $table = 'autor';
 
     public function libros(){
-        return $this->hasMany(Libro::class);
+        return $this->hasMany(Libro::class,'id_autor');
         }
 }

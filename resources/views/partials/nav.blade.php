@@ -8,6 +8,7 @@
       <div class="navbar-nav">
         <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Home</a>
         <a class="nav-link" href="{{ route('libros.index') }}">Listado de libros</a>
+        <a class="nav-link" href="{{ route('autores.index') }}">Listado de Autores</a>
       </div>
     </div>
   </div>

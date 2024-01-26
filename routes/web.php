@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LibroController;
+use App\Http\Controllers\AutorController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -124,4 +126,6 @@ Route::put('update', [LibroController::class, 'update'])
 
 Route::resource('libros', LibroController::class);
 
-//Route::resource('autores', AutorController::class);
+Route::resource('autores', AutorController::class);
+
+Route::get('lista', [AutorController::class, 'lista'])->name('autores.lista');
