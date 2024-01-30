@@ -129,3 +129,5 @@ Route::resource('libros', LibroController::class);
 Route::resource('autores', AutorController::class);
 
 Route::get('lista', [AutorController::class, 'lista'])->name('autores.lista');
+Route::get('apiLista/{id}', [AutorController::class, 'apiLista'])->name('autores.apiLista');
+Route::get('apiListaLibros/{id}', [LibroController::class, 'apiLista'])->name('libros.apiLista');

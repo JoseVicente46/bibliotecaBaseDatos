@@ -71,4 +71,9 @@ class AutorController extends Controller
         $libros = Autor::findOrFail($id)->libros;
         return view('librosAutor',compact('libros'));    
     }
+
+    public function apiLista(string $id){
+        $libros = Autor::findOrFail($id)->libros;
+        return $libros;    
+    }
 }

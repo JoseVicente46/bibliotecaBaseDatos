@@ -77,4 +77,9 @@ class LibroController extends Controller
         Libro::findOrFail($id)->delete();
         return redirect()->route("libros.index");
     }
+
+    public function apiLista(string $id){
+        $libros = Libro::find($id);
+        return $libros;    
+    }
 }
